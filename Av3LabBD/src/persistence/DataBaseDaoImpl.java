@@ -1,9 +1,12 @@
 package persistence;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +33,20 @@ public class DataBaseDaoImpl implements DatabaseDao {
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
 		while ( rs.next() ) {
-			Database db = new Database();
-			db.setId(rs.getLong("dbid"));
-			db.setNome(rs.getString("name"));
-			db.setData(rs.getDate("data"));
-			db.setHora(rs.getString("hora"));
-			lista.add(db);
+			try {
+				Database db = new Database();
+				db.setId(rs.getLong("dbid"));
+				db.setNome(rs.getString("name"));
+				Date data = new Date(sdf.parse(rs.getString("data")).getTime());
+				db.setData(data);
+				db.setHora(rs.getString("hora"));
+				lista.add(db);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return lista;
