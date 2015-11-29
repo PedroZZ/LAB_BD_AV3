@@ -47,7 +47,7 @@ public class DatabaseMB {
 
 	public void fullBackup(){
 		try {
-			dbDao.backupBD("backupBD/");
+			dbDao.backupBD("C:\\Users\\Pedro\\git\\LAB_BD_AV3\\Av3LabBD\\WebContent\\backupBD\\");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

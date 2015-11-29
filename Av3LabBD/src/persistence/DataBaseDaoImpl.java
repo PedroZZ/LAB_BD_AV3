@@ -56,8 +56,9 @@ public class DataBaseDaoImpl implements DatabaseDao {
 
 	@Override
 	public void backupBD(String pasta) throws SQLException {
-		String sql = "{call sp_backupBD(" + pasta + ")}";
+		String sql = "{call sp_backupBD(?)}";
 		CallableStatement cs = c.prepareCall(sql);
+		cs.setString(1, pasta);
 		cs.execute();
 		cs.close();
 	}
