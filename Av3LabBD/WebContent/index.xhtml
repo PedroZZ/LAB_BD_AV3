@@ -35,11 +35,23 @@
 					<h:outputText value="#{db.hora}" />
 				</p:column>
 				<p:column>
-					  <h:commandLink >remover</h:commandLink>
+					<h:commandLink>Download</h:commandLink>
 					<f:facet name="header">Ações</f:facet>
 				</p:column>
 			</p:dataTable>
 		</h:form>
+
+		<h:form>
+			<h:panelGrid columns="2">
+
+				<h:outputText value="Realizar FULL BACKUP de todas as Databases" />
+				<h:commandButton value="FULLBACKUP"
+					actionListener="#{databaseMB.fullBackup}" />
+
+			</h:panelGrid>
+		</h:form>
+
+
 	</div>
 
 </h:body>

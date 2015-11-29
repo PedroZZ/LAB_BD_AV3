@@ -37,6 +37,10 @@ public class DatabaseMB {
 		}
 	}
 
+	public void fullBackup(){
+		System.out.println("fullbackup");
+	}
+	
 	public List<Database> getLista() {
 		return lista;
 	}
