@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.event.FileUploadEvent;
+
 import model.Database;
 import persistence.DataBaseDaoImpl;
 import persistence.DatabaseDao;
@@ -36,6 +38,12 @@ public class DatabaseMB {
 			e.printStackTrace();
 		}
 	}
+	
+    public void handleFileUpload(FileUploadEvent event) {
+        FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
 
 	public void fullBackup(){
 		System.out.println("fullbackup");
