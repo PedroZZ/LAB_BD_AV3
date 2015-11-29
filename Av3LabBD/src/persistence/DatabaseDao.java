@@ -9,4 +9,6 @@ public interface DatabaseDao {
 
 	public List<Database> listaDatabase() throws SQLException;
 	
+	void backupBD(String pasta) throws SQLException;
+	
 }

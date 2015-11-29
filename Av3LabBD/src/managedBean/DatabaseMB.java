@@ -46,7 +46,11 @@ public class DatabaseMB {
 
 
 	public void fullBackup(){
-		System.out.println("fullbackup");
+		try {
+			dbDao.backupBD("backupBD/");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Database> getLista() {

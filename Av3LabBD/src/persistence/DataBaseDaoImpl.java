@@ -1,5 +1,6 @@
 package persistence;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -51,6 +52,14 @@ public class DataBaseDaoImpl implements DatabaseDao {
 		}
 		
 		return lista;
+	}
+
+	@Override
+	public void backupBD(String pasta) throws SQLException {
+		String sql = "{call sp_backupBD(" + pasta + ")}";
+		CallableStatement cs = c.prepareCall(sql);
+		cs.execute();
+		cs.close();
 	}
 
 
