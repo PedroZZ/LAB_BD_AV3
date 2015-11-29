@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import model.Database;
@@ -13,11 +14,12 @@ import persistence.DataBaseDaoImpl;
 import persistence.DatabaseDao;
 
 @ManagedBean
+@SessionScoped
 public class DatabaseMB {
 	
 	private List<Database> lista;
 	private DatabaseDao dbDao;
-	
+
 	public DatabaseMB() {
 		setLista(new ArrayList<Database>());
 		dbDao = new DataBaseDaoImpl();
@@ -41,6 +43,14 @@ public class DatabaseMB {
 
 	public void setLista(List<Database> lista) {
 		this.lista = lista;
+	}
+	
+	public DatabaseDao getDbDao() {
+		return dbDao;
+	}
+
+	public void setDbDao(DatabaseDao dbDao) {
+		this.dbDao = dbDao;
 	}
 
 }
