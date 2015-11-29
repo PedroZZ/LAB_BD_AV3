@@ -11,6 +11,7 @@ public class Database {
 
 	private String nome;
 	private Date data;
+	private String hora;
 	private long id;
 
 	public String getNome() {
@@ -35,6 +36,14 @@ public class Database {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
 	}
 
 }
