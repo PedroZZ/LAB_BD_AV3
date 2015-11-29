@@ -49,6 +49,18 @@
 					actionListener="#{databaseMB.fullBackup}" />
 
 			</h:panelGrid>
+
+			<h:form>
+			    <h:outputText value="Realizar UPLOAD de um aquivo .BAK" />
+				<p:fileUpload
+					fileUploadListener="#{databaseMB.handleFileUpload}"
+					mode="advanced" dragDropSupport="false" update="messages"
+				 fileLimit="1"
+					allowTypes="/(\.|\/)(bak)$/"  />
+
+				<p:growl id="messages" showDetail="true" />
+			</h:form>
+
 		</h:form>
 
 
