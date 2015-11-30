@@ -64,9 +64,13 @@ public class DataBaseDaoImpl implements DatabaseDao {
 	}
 
 	@Override
-	public void backupSelecionados() throws SQLException {
-		// TODO Auto-generated method stub
-		
+	public void backupSelecionado(Database db, String caminho) throws SQLException {
+		String sql = "{call sp_backupSelecionado(?,?)}";
+		CallableStatement cs = c.prepareCall(sql);
+		cs.setString(1, caminho);
+		cs.setString(2, db.getNome());
+		cs.execute();
+		cs.close();
 	}
 
 

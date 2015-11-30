@@ -11,6 +11,6 @@ public interface DatabaseDao {
 	
 	void backupBD(String pasta) throws SQLException;
 	
-	void backupSelecionados() throws SQLException;
+	void backupSelecionado(Database db, String caminho) throws SQLException;
 	
 }

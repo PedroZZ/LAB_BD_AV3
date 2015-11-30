@@ -25,6 +25,7 @@ public class DatabaseMB implements Serializable{
 	
 	private List<Database> lista;
 	private DatabaseDao dbDao;
+	private final String caminho = "C:\\Users\\Pedro\\git\\LAB_BD_AV3\\Av3LabBD\\WebContent\\backupBD\\";
 
 	public DatabaseMB() {
 		lista = new ArrayList<Database>();
@@ -51,14 +52,18 @@ public class DatabaseMB implements Serializable{
 
 	public void fullBackup(){
 		try {
-			dbDao.backupBD("C:\\Users\\Pedro\\git\\LAB_BD_AV3\\Av3LabBD\\WebContent\\backupBD\\");
+			dbDao.backupBD(caminho);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void backupSelecionados(Database db) {
-		System.out.println(db.getId());
+		try {
+			dbDao.backupSelecionado(db, caminho);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Database> getLista() {
