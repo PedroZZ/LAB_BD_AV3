@@ -18,7 +18,7 @@
 			<h:commandButton actionListener="#{databaseMB.listaBD()}"
 				value="carregar" />
 			<p:dataTable var="db" rendered="#{databaseMB.lista.size() > 0}"
-				value="#{databaseMB.lista}">
+				value="#{databaseMB.lista}" selectionMode="single" rowKey="#{db.id}">
 				<f:facet name="header">
 					DataBase
 				</f:facet>
@@ -38,15 +38,21 @@
 					<h:commandLink>Download</h:commandLink>
 					<f:facet name="header">Ações</f:facet>
 				</p:column>
+				<p:column headerText="Backup">
+				<h:commandButton value="Fazer Backup"
+					action="#{databaseMB.backupSelecionados(db)}" />
+				</p:column>
 			</p:dataTable>
 		</h:form>
-
+	
 		<h:form>
 			<h:panelGrid columns="2">
 
 				<h:outputText value="Realizar FULL BACKUP de todas as Databases" />
 				<h:commandButton value="FULLBACKUP"
 					actionListener="#{databaseMB.fullBackup}" />
+					
+				<h:outputText value="Realizar BACKUP de Databases selecionadas" />
 
 			</h:panelGrid>
 

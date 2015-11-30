@@ -1,5 +1,6 @@
 package managedBean;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +9,10 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.SelectEvent;
 
 import model.Database;
 import persistence.DataBaseDaoImpl;
@@ -17,13 +20,14 @@ import persistence.DatabaseDao;
 
 @ManagedBean
 @SessionScoped
-public class DatabaseMB {
+public class DatabaseMB implements Serializable{
+	private static final long serialVersionUID = 1040446122915171399L;
 	
 	private List<Database> lista;
 	private DatabaseDao dbDao;
 
 	public DatabaseMB() {
-		setLista(new ArrayList<Database>());
+		lista = new ArrayList<Database>();
 		dbDao = new DataBaseDaoImpl();
 	}
 	
@@ -51,6 +55,10 @@ public class DatabaseMB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void backupSelecionados(Database db) {
+		System.out.println(db.getId());
 	}
 	
 	public List<Database> getLista() {

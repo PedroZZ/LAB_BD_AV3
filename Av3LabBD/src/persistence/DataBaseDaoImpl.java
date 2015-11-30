@@ -63,6 +63,12 @@ public class DataBaseDaoImpl implements DatabaseDao {
 		cs.close();
 	}
 
+	@Override
+	public void backupSelecionados() throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }
